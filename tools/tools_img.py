@@ -27,9 +27,25 @@ def quality_img(quality_setting):
     return quality_map.get(quality_setting, 60)
 
 def compress_img(img, user_data):
+    # Convert image to RGB if it's not already (JPEG doesn't support RGBA)
+    if user_data['img_converted_extension'].upper() == 'JPEG' and img.mode in ('RGBA', 'LA'):
+        img = img.convert('RGB')
+    
     buf = io.BytesIO()
-    img.save(buf, format=user_data['img_converted_extension'], 
-             quality=quality_img(user_data['img_converted_quality']))
+    save_kwargs = {}
+    
+    # Set format-specific parameters
+    if user_data['img_converted_extension'].upper() in ['JPEG', 'WEBP']:
+        save_kwargs['quality'] = quality_img(user_data['img_converted_quality'])
+    elif user_data['img_converted_extension'].upper() == 'PNG':
+        if user_data['img_converted_quality'] == 'Poor':
+            save_kwargs['optimize'] = True
+            save_kwargs['compress_level'] = 9
+        else:
+            save_kwargs['optimize'] = True
+            save_kwargs['compress_level'] = 6
+    
+    img.save(buf, format=user_data['img_converted_extension'], **save_kwargs)
     buf.seek(0)
     return buf
 
