@@ -12,7 +12,71 @@ from tools.tools_img import (
 )
 
 # Page config and styling
-st.set_page_config(page_title="JPEG Image Compressor", layout="wide")
+st.set_page_config(
+    page_title="JPEG Image Compressor",
+    page_icon="🖼️",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# Sidebar
+with st.sidebar:
+    st.image("https://img.icons8.com/color/96/000000/compress.png", width=100)
+    st.title("📚 Guide")
+    
+    st.markdown("### 🎯 Features")
+    st.markdown("""
+    - Multiple image formats (JPEG, PNG, WebP)
+    - Batch processing
+    - Quality control
+    - Image resizing
+    - Format conversion
+    """)
+    
+    st.markdown("### 🔧 How to Use")
+    st.markdown("""
+    1. **Upload Images**
+       - Click 'Browse files' or drag & drop
+       - Supports JPG, PNG, and WebP
+    
+    2. **Adjust Settings**
+       - Choose output format
+       - Set quality level
+       - Adjust image scale
+       - Rename output files
+    
+    3. **Process Images**
+       - Single image: Click 'Compress'
+       - Multiple images: Enable 'Process all' and click 'Compress All'
+    """)
+    
+    st.markdown("### 💡 Tips")
+    st.markdown("""
+    - **For Web Images**: Use JPEG with 'Medium' quality
+    - **For Photos**: Use JPEG with 'High' quality
+    - **For Graphics**: Use PNG for best quality
+    - **For Modern Web**: Try WebP format
+    - **Batch Processing**: Enable for multiple images
+    """)
+    
+    st.markdown("### 📊 Quality Guide")
+    st.markdown("""
+    - **High**: Best quality, larger file size
+    - **Good**: Great quality, optimized size
+    - **Medium**: Balanced quality/size
+    - **Low**: Small size, visible loss
+    - **Poor**: Smallest size, significant loss
+    """)
+    
+    st.divider()
+    st.markdown("### 🔗 Links")
+    st.markdown("""
+    - [GitHub Repository](https://github.com/mahanteshimath/JPEG_IMAGE_COMPRESSOR)
+    - [Report an Issue](https://github.com/mahanteshimath/JPEG_IMAGE_COMPRESSOR/issues)
+    """)
+    
+    st.divider()
+    st.markdown("Made with ❤️ by [mahanteshimath](https://github.com/mahanteshimath)")
 
 # Custom CSS for better UI
 st.markdown("""
