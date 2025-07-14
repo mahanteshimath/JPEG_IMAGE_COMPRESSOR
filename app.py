@@ -78,20 +78,29 @@ with st.sidebar:
     st.divider()
     st.markdown("Made with ❤️ by [mahanteshimath](https://github.com/mahanteshimath)")
 
-# Custom CSS for modern shadcn-inspired UI
+# Custom CSS for modern UI with better colors
 st.markdown("""
 <style>
     /* Modern color scheme */
     :root {
-        --primary: #2B1B3D;
-        --primary-light: #3d2957;
-        --accent: #F63366;
-        --background: #FAFAFA;
+        --primary: #7C3AED;
+        --primary-light: #8B5CF6;
+        --primary-dark: #5B21B6;
+        --accent: #EC4899;
+        --accent-light: #F472B6;
+        --background: #F8FAFC;
         --card: #FFFFFF;
-        --text: #1A1A1A;
-        --text-muted: #666666;
-        --border: #E5E7EB;
+        --card-hover: #F1F5F9;
+        --text: #0F172A;
+        --text-muted: #64748B;
+        --border: #E2E8F0;
         --success: #10B981;
+        --success-light: #34D399;
+        --gradient-start: #7C3AED;
+        --gradient-end: #EC4899;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
 
     /* Global styles */
@@ -108,55 +117,69 @@ st.markdown("""
     }
 
     h1 {
-        background: linear-gradient(45deg, var(--primary), var(--accent));
+        background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;
-        padding: 1.5rem;
-        font-size: 2.5rem !important;
+        padding: 2rem;
+        font-size: 3rem !important;
+        font-weight: 800;
         margin-bottom: 2rem;
+        text-shadow: var(--shadow-sm);
     }
 
     /* Cards */
     [data-testid="stVerticalBlock"] {
         background: var(--card);
         border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 1.5rem;
-        margin: 1rem 0;
-        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-        transition: transform 0.2s, box-shadow 0.2s;
+        border-radius: 16px;
+        padding: 2rem;
+        margin: 1.5rem 0;
+        box-shadow: var(--shadow);
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    [data-testid="stVerticalBlock"]:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--primary-light);
+        background: var(--card-hover);
     }
 
     /* Buttons */
     .stButton>button {
-        background: var(--primary);
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
         border: none;
-        border-radius: 8px;
+        border-radius: 12px;
         color: white;
-        padding: 0.5rem 1rem;
-        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
         width: 100%;
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow);
     }
 
     .stButton>button:hover {
-        background: var(--primary-light);
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        background: linear-gradient(135deg, var(--primary-light), var(--primary));
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
     }
 
     .stDownloadButton>button {
-        background: var(--success);
+        background: linear-gradient(135deg, var(--success), var(--success-light));
         color: white;
-        border-radius: 8px;
-        font-weight: 500;
-        transition: all 0.2s ease;
+        border-radius: 12px;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow);
     }
 
     .stDownloadButton>button:hover {
-        filter: brightness(110%);
-        transform: translateY(-1px);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+        filter: brightness(105%);
     }
 
     /* Input fields */
@@ -212,12 +235,18 @@ st.markdown("""
     }
 
     div[data-testid="stMarkdownContainer"] ul li {
-        padding: 0.5rem 0;
-        border-bottom: 1px solid var(--border);
+        padding: 1rem;
+        margin: 0.5rem 0;
+        border-radius: 8px;
+        background: var(--card-hover);
+        border: 1px solid var(--border);
+        transition: all 0.2s ease;
     }
 
-    div[data-testid="stMarkdownContainer"] ul li:last-child {
-        border-bottom: none;
+    div[data-testid="stMarkdownContainer"] ul li:hover {
+        border-color: var(--primary-light);
+        transform: translateX(5px);
+        box-shadow: var(--shadow-sm);
     }
 
     /* Progress bar */
