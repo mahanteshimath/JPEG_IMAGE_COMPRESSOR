@@ -193,6 +193,25 @@ if uploaded_files:
                     })
                     progress_bar.progress((idx + 1) / len(uploaded_files))
 
+                # Calculate total compression statistics
+                total_original_size = sum(len(file.getvalue()) for file in uploaded_files)
+                total_compressed_size = sum(len(file["data"]) for file in compressed_files)
+                total_ratio = (1 - total_compressed_size / total_original_size) * 100
+                
+                # Show batch compression results
+                st.success(f"✅ Successfully compressed {len(uploaded_files)} images!")
+                st.markdown(f"""
+                <div style='background-color: #f0f8ff; padding: 20px; border-radius: 10px; margin: 10px 0;'>
+                    <h4 style='color: #2B1B3D; margin: 0;'>📊 Batch Compression Results</h4>
+                    <ul style='list-style-type: none; padding-left: 0;'>
+                        <li>📥 Total Original Size: {total_original_size/1024:.1f} KB</li>
+                        <li>📤 Total Compressed Size: {total_compressed_size/1024:.1f} KB</li>
+                        <li>📈 Average Compression Ratio: {total_ratio:.1f}%</li>
+                        <li>🖼️ Images Processed: {len(compressed_files)}</li>
+                    </ul>
+                </div>
+                """, unsafe_allow_html=True)
+                
                 # Create ZIP file
                 zip_buffer = io.BytesIO()
                 with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zip_file:
@@ -211,6 +230,25 @@ if uploaded_files:
                     uploaded_files[st.session_state.current_image], 
                     user_settings
                 )
+                
+                # Calculate sizes and compression ratio
+                original_size = len(uploaded_files[st.session_state.current_image].getvalue())
+                compressed_size = len(compressed)
+                ratio = (1 - compressed_size / original_size) * 100
+                
+                # Show compression results with color coding
+                st.success("✅ Image compressed successfully!")
+                st.markdown(f"""
+                <div style='background-color: #f0f8ff; padding: 20px; border-radius: 10px; margin: 10px 0;'>
+                    <h4 style='color: #2B1B3D; margin: 0;'>📊 Compression Results</h4>
+                    <ul style='list-style-type: none; padding-left: 0;'>
+                        <li>📥 Original Size: {original_size/1024:.1f} KB</li>
+                        <li>📤 Compressed Size: {compressed_size/1024:.1f} KB</li>
+                        <li>📈 Compression Ratio: {ratio:.1f}%</li>
+                    </ul>
+                </div>
+                """, unsafe_allow_html=True)
+                
                 st.download_button(
                     "Download",
                     data=compressed,
