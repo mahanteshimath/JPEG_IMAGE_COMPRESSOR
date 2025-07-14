@@ -78,32 +78,161 @@ with st.sidebar:
     st.divider()
     st.markdown("Made with ❤️ by [mahanteshimath](https://github.com/mahanteshimath)")
 
-# Custom CSS for better UI
+# Custom CSS for modern shadcn-inspired UI
 st.markdown("""
 <style>
-    .main {
-        background-color: #f8f9fa;
+    /* Modern color scheme */
+    :root {
+        --primary: #2B1B3D;
+        --primary-light: #3d2957;
+        --accent: #F63366;
+        --background: #FAFAFA;
+        --card: #FFFFFF;
+        --text: #1A1A1A;
+        --text-muted: #666666;
+        --border: #E5E7EB;
+        --success: #10B981;
     }
+
+    /* Global styles */
+    .main {
+        background-color: var(--background);
+        font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+        color: var(--text);
+        font-weight: 600;
+        letter-spacing: -0.025em;
+    }
+
     h1 {
-        color: #2B1B3D;
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         text-align: center;
-        padding: 1rem;
-        border: solid #2B1B3D;
-        border-radius: 10px;
+        padding: 1.5rem;
+        font-size: 2.5rem !important;
         margin-bottom: 2rem;
     }
+
+    /* Cards */
+    [data-testid="stVerticalBlock"] {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    /* Buttons */
     .stButton>button {
-        background-color: #2B1B3D;
+        background: var(--primary);
+        border: none;
+        border-radius: 8px;
         color: white;
+        padding: 0.5rem 1rem;
+        font-weight: 500;
         width: 100%;
+        transition: all 0.2s ease;
     }
+
+    .stButton>button:hover {
+        background: var(--primary-light);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
     .stDownloadButton>button {
-        background-color: #28a745;
+        background: var(--success);
         color: white;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.2s ease;
     }
-    .upload-text {
-        text-align: center;
+
+    .stDownloadButton>button:hover {
+        filter: brightness(110%);
+        transform: translateY(-1px);
+    }
+
+    /* Input fields */
+    .stTextInput>div>div>input {
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        padding: 0.5rem;
+        transition: all 0.2s ease;
+    }
+
+    .stTextInput>div>div>input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(43,27,61,0.1);
+    }
+
+    /* Sliders */
+    .stSlider>div>div {
+        background-color: #E5E7EB;
+    }
+
+    .stSlider>div>div>div>div {
+        background-color: var(--primary);
+    }
+
+    /* File uploader */
+    .stUploadButton {
+        background: var(--background);
+        border: 2px dashed var(--border);
+        border-radius: 12px;
         padding: 2rem;
+        text-align: center;
+        transition: all 0.2s ease;
+    }
+
+    .stUploadButton:hover {
+        border-color: var(--primary);
+        background: rgba(43,27,61,0.05);
+    }
+
+    /* Info boxes */
+    .element-container .stAlert {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+
+    /* Results card */
+    div[data-testid="stMarkdownContainer"] ul {
+        list-style-type: none;
+        padding: 0.5rem 0;
+    }
+
+    div[data-testid="stMarkdownContainer"] ul li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    div[data-testid="stMarkdownContainer"] ul li:last-child {
+        border-bottom: none;
+    }
+
+    /* Progress bar */
+    .stProgress > div > div {
+        background-color: var(--success);
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .element-container {
+        animation: fadeIn 0.3s ease-out forwards;
     }
 </style>
 """, unsafe_allow_html=True)
