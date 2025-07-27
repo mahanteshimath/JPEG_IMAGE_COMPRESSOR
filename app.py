@@ -82,6 +82,13 @@ with st.sidebar:
 # Title and description
 st.markdown("<h1>JPEG Image Compressor</h1>", unsafe_allow_html=True)
 
+
+st.write("""
+👋 How JPEG Image compression works ?
+""")
+
+st.write("---")
+
 st.write("""
 👋 Welcome to JPEG Image Compressor! 
 Your one-stop solution for optimizing images for the web.
