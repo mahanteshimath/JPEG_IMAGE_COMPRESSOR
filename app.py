@@ -83,13 +83,9 @@ with st.sidebar:
 st.markdown("<h1>JPEG Image Compressor</h1>", unsafe_allow_html=True)
 
 st.write("""
-<<<<<<< HEAD
 👋 Welcome to JPEG Image Compressor! 
 Your one-stop solution for optimizing images for the web.
 Compress single or multiple images with just a few clicks!
-=======
-Upload JPEG image, select the compression quality, and download the compressed image.
->>>>>>> 2d0f5d6 (FINAL)
 """)
 
 st.write("---")
