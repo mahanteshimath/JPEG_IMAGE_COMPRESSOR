@@ -91,7 +91,7 @@ st.write("""
 import os
 from PIL import Image
 
-st.write("### Example: Compression Results")
+
 example_images = [
     ("src/JPEG_COMP.jpg", "Block diagram of (a) JPEG encoder, (b) JPEG decoder"),
     ("src/JPEG_COMP2.jpg", "DIPA CLASS NOTE"),
