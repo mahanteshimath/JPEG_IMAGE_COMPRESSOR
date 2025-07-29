@@ -3,7 +3,7 @@
 
 Compress JPEG images easily with a beautiful web interface powered by Streamlit.
 
-![App Screenshot](https://user-images.githubusercontent.com/674621/210176084-3b6e3e7e-6b7e-4e2e-8e2e-2e7e2e2e2e2e.png)
+
 
 ## Features
 
