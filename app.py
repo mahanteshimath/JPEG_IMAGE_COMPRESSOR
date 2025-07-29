@@ -79,12 +79,9 @@ with st.sidebar:
     st.markdown("Made with ❤️ by [mahanteshimath](https://github.com/mahanteshimath)")
 
 
-# Title and description
-st.markdown("<h1>JPEG Image Compressor</h1>", unsafe_allow_html=True)
-
 
 st.write("""
-👋 How JPEG Image compression works ?
+### 👋 How JPEG Image compression works ?
 """)
 
 # Display example images for compression demonstration
@@ -267,7 +264,7 @@ st.write(" ")
 st.write(" ")
 st.write(" ")
 # Embed YouTube video explaining JPEG compression
-st.write("### Watch: How JPEG Compression Works")
+st.write("### Watch: How JPEG Compression Works (interesting video)")
 st.video("https://youtu.be/Kv1Hiv3ox8I")
 
 st.write("---")
