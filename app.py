@@ -263,7 +263,9 @@ if uploaded_files:
 else:
     st.info("👆 Upload some images to get started!")
 
-
+st.write(" ")
+st.write(" ")
+st.write(" ")
 # Embed YouTube video explaining JPEG compression
 st.write("### Watch: How JPEG Compression Works")
 st.video("https://youtu.be/Kv1Hiv3ox8I")
