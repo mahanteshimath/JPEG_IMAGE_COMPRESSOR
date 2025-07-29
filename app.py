@@ -107,11 +107,7 @@ for idx, (img_path, caption) in enumerate(example_images):
         else:
             st.write(f"Image not found: {img_path}")
 
-# Embed YouTube video explaining JPEG compression
-st.write("### Watch: How JPEG Compression Works")
-st.video("https://youtu.be/Kv1Hiv3ox8I")
 
-st.write("---")
 
 st.write("""
 👋 Welcome to JPEG Image Compressor! 
@@ -266,3 +262,10 @@ if uploaded_files:
         """)
 else:
     st.info("👆 Upload some images to get started!")
+
+
+# Embed YouTube video explaining JPEG compression
+st.write("### Watch: How JPEG Compression Works")
+st.video("https://youtu.be/Kv1Hiv3ox8I")
+
+st.write("---")
