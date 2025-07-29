@@ -87,6 +87,30 @@ st.write("""
 👋 How JPEG Image compression works ?
 """)
 
+# Display example images for compression demonstration
+import os
+from PIL import Image
+
+st.write("### Example: Compression Results")
+example_images = [
+    ("src/JPEG_COMP.jpg", "Original Image"),
+    ("src/JPEG_COMP2.jpg", "Compressed (Medium Quality)"),
+    ("src/JPEG_COMP3.jpg", "Compressed (Low Quality)")
+]
+
+cols = st.columns(3)
+for idx, (img_path, caption) in enumerate(example_images):
+    with cols[idx]:
+        if os.path.exists(img_path):
+            img = Image.open(img_path)
+            st.image(img, caption=caption, use_column_width=True)
+        else:
+            st.write(f"Image not found: {img_path}")
+
+# Embed YouTube video explaining JPEG compression
+st.write("### Watch: How JPEG Compression Works")
+st.video("https://youtu.be/Kv1Hiv3ox8I")
+
 st.write("---")
 
 st.write("""
